@@ -1,14 +1,42 @@
-import { Pressable, PressableProps, StyleSheet, Text } from 'react-native';
+import { Animated, GestureResponderEvent, Pressable, PressableProps, StyleSheet, Text, View } from 'react-native';
 import { Colors, Radius } from '../tokens';
 
 interface IButtonProps extends PressableProps {
   title: string;
 }
 
-export function Button({ title, ...props }: IButtonProps) {
+export function Button({ title, onPressIn, onPressOut, ...props }: IButtonProps) {
+  const animatedValue = new Animated.Value(100);
+  const color = animatedValue.interpolate({
+    inputRange: [0, 100],
+    outputRange: [Colors.primaryHover, Colors.primary],
+  });
+
+  const fadeIn = (evt: GestureResponderEvent) => {
+    Animated.timing(animatedValue, {
+      toValue: 0,
+      duration: 100,
+      useNativeDriver: true,
+    }).start();
+
+    onPressIn && onPressIn(evt);
+  };
+
+  const fadeOut = (evt: GestureResponderEvent) => {
+    Animated.timing(animatedValue, {
+      toValue: 100,
+      duration: 100,
+      useNativeDriver: true,
+    }).start();
+
+    onPressOut && onPressOut(evt);
+  };
+
   return (
-    <Pressable style={styles.button} {...props}>
-      <Text style={styles.text}>{title}</Text>
+    <Pressable {...props} onPressIn={fadeIn} onPressOut={fadeOut}>
+      <Animated.View style={{ ...styles.button, backgroundColor: color }}>
+        <Text style={styles.text}>{title}</Text>
+      </Animated.View>
     </Pressable>
   );
 }
@@ -16,7 +44,6 @@ export function Button({ title, ...props }: IButtonProps) {
 const styles = StyleSheet.create({
   button: {
     height: 58,
-    backgroundColor: Colors.primary,
     paddingVertical: 12,
     paddingHorizontal: 24,
     borderRadius: Radius.r10,
