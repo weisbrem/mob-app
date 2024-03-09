@@ -16,7 +16,7 @@ export function Button({ title, onPressIn, onPressOut, ...props }: IButtonProps)
     Animated.timing(animatedValue, {
       toValue: 0,
       duration: 100,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
 
     onPressIn && onPressIn(evt);
@@ -26,7 +26,7 @@ export function Button({ title, onPressIn, onPressOut, ...props }: IButtonProps)
     Animated.timing(animatedValue, {
       toValue: 100,
       duration: 100,
-      useNativeDriver: true,
+      useNativeDriver: false,
     }).start();
 
     onPressOut && onPressOut(evt);
