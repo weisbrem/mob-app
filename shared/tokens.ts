@@ -6,6 +6,7 @@ export const Colors = {
   primaryHover: '#452481',
   link: '#a97bff',
   text: '#fafafa',
+  toastErrorBg: '#CC384E',
 };
 
 export const Gaps = {
