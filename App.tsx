@@ -1,6 +1,7 @@
-import { Button, StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import { Input } from './shared/input/input';
 import { Colors, Gaps, Radius } from './shared/tokens';
+import { Button } from './shared/Button/Button';
 
 export default function App() {
   return (
@@ -33,16 +34,6 @@ const styles = StyleSheet.create({
   loginForm: {
     rowGap: Gaps.g16,
     alignSelf: 'stretch',
-  },
-  enterButton: {
-    color: Colors.text,
-    backgroundColor: Colors.primary,
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: Radius.r10,
-    fontSize: 18,
-    lineHeight: 20,
-    fontWeight: '400',
   },
   resetLink: {
     color: Colors.link,
