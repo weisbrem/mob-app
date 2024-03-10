@@ -1,4 +1,4 @@
-import { Animated, GestureResponderEvent, Pressable, PressableProps, StyleSheet, Text, View } from 'react-native';
+import { Animated, GestureResponderEvent, Pressable, PressableProps, StyleSheet, Text } from 'react-native';
 import { Colors, Radius } from '../tokens';
 
 interface IButtonProps extends PressableProps {

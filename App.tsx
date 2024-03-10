@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Input } from './shared/input/input';
-import { Colors, Gaps, Radius } from './shared/tokens';
+import { Colors, Gaps } from './shared/tokens';
 import { Button } from './shared/Button/Button';
 import { Toast } from './shared/Toast/Toast';
 import { useState } from 'react';

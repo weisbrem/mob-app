@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Dimensions, Animated } from 'react-native';
+import { Text, StyleSheet, Dimensions, Animated } from 'react-native';
 import { Colors } from '../tokens';
 import { useEffect, useState } from 'react';
 
@@ -7,7 +7,7 @@ interface IToastProps {
   type?: 'error';
 }
 
-export function Toast({ text, type = 'error' }: IToastProps) {
+export function Toast({ text }: IToastProps) {
   const [isVisible, setIsVisible] = useState(false);
   const animatedValue = new Animated.Value(-100);
 
