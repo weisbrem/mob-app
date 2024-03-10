@@ -1,0 +1,36 @@
+export const Colors = {
+  black: '#16171d',
+  gray: '#afb2bf',
+  violetDark: '#2e2d3d',
+  primary: '#6c38cc',
+  primaryHover: '#452481',
+  link: '#a97bff',
+  text: '#fafafa',
+  toastErrorBg: '#CC384E',
+};
+
+export const Gaps = {
+  g16: 16,
+  g50: 50,
+};
+
+export const Radius = {
+  r10: 10,
+};
+
+export const FontSize = {
+  f16: 16,
+  f18: 18,
+  f20: 20,
+};
+
+export const LineHeight = {
+  l18: 18,
+  l20: 20,
+  l24: 24,
+};
+
+export const FontFamily = {
+  FiraSans: 'FiraSans',
+  FiraSansSemiBold: 'FiraSansSemiBold',
+};
