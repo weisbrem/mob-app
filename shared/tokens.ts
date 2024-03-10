@@ -17,3 +17,20 @@ export const Gaps = {
 export const Radius = {
   r10: 10,
 };
+
+export const FontSize = {
+  f16: 16,
+  f18: 18,
+  f20: 20,
+};
+
+export const LineHeight = {
+  l18: 18,
+  l20: 20,
+  l24: 24,
+};
+
+export const FontFamily = {
+  FiraSans: 'FiraSans',
+  FiraSansSemiBold: 'FiraSansSemiBold',
+};
