@@ -48,6 +48,7 @@ export function Toast({ text }: IToastProps) {
 const styles = StyleSheet.create({
   error: {
     position: 'absolute',
+    top: 0,
     width: Dimensions.get('screen').width,
     backgroundColor: Colors.toastErrorBg,
     padding: 15,
