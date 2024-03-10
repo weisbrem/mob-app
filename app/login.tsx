@@ -5,6 +5,7 @@ import { Button } from '../shared/Button/Button';
 import { Toast } from '../shared/Toast/Toast';
 import { useState } from 'react';
 import CustomLink from '../shared/CustomLink/CustomLink';
+import { AppRoutes } from '../shared/common.types';
 
 export default function Login() {
   const [errorText, setErrorText] = useState<string | undefined>();
@@ -28,7 +29,7 @@ export default function Login() {
           <Input isPassword placeholder='Пароль' placeholderTextColor={Colors.gray} />
           <Button title='Войти' onPress={alert} />
         </View>
-        <CustomLink href={'/restore'} text='Восстановить пароль' />
+        <CustomLink href={AppRoutes.restore} text='Восстановить пароль' />
         <CustomLink href={'/course/ts'} text='курс' />
       </View>
     </View>

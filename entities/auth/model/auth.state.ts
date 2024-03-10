@@ -1,4 +1,4 @@
-import { TFetchStatus } from '../../../shared/types';
+import { TFetchStatus } from '../../../shared/common.types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { atom } from 'jotai';
 import { atomWithStorage, createJSONStorage } from 'jotai/utils';

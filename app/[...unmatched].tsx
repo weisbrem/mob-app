@@ -2,6 +2,7 @@ import { Text, Image, StyleSheet } from 'react-native';
 import { Colors } from '../shared/tokens';
 import CustomLink from '../shared/CustomLink/CustomLink';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { AppRoutes } from '../shared/common.types';
 
 export default function UnmatchedCustom() {
   return (
@@ -9,7 +10,7 @@ export default function UnmatchedCustom() {
       <Image style={styles.image} resizeMode='contain' source={require('../assets/images/unmatched.png')} />
 
       <Text style={styles.text}>Ооо... что-то пошло не так. Попробуйте вернуться на главный экран приложения</Text>
-      <CustomLink href={'/'} text='На главный экран' />
+      <CustomLink href={AppRoutes.root} text='На главный экран' />
     </SafeAreaView>
   );
 }

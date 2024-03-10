@@ -1,5 +1,5 @@
 import { atom } from 'jotai';
-import { TFetchStatus } from '../../../shared/types';
+import { TFetchStatus } from '../../../shared/common.types';
 import { IUser } from './user.model';
 
 export const profileAtom = atom<IUserState>({
