@@ -1,11 +1,20 @@
-import { Animated, GestureResponderEvent, Pressable, PressableProps, StyleSheet, Text } from 'react-native';
+import {
+  Animated,
+  GestureResponderEvent,
+  Pressable,
+  PressableProps,
+  StyleSheet,
+  Text,
+  ActivityIndicator,
+} from 'react-native';
 import { Colors, FontFamily, FontSize, LineHeight, Radius } from '../tokens';
 
 interface IButtonProps extends PressableProps {
   title: string;
+  isPending?: boolean;
 }
 
-export function Button({ title, onPressIn, onPressOut, ...props }: IButtonProps) {
+export function Button({ title, isPending, onPressIn, onPressOut, ...props }: IButtonProps) {
   const animatedValue = new Animated.Value(100);
   const color = animatedValue.interpolate({
     inputRange: [0, 100],
@@ -35,7 +44,8 @@ export function Button({ title, onPressIn, onPressOut, ...props }: IButtonProps)
   return (
     <Pressable {...props} onPressIn={fadeIn} onPressOut={fadeOut}>
       <Animated.View style={{ ...styles.button, backgroundColor: color }}>
-        <Text style={styles.text}>{title}</Text>
+        {isPending && <ActivityIndicator color={Colors.text} size={'large'} />}
+        {!isPending && <Text style={styles.text}>{title}</Text>}
       </Animated.View>
     </Pressable>
   );

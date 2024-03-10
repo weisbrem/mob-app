@@ -14,7 +14,9 @@ export default function Login() {
   const [errorText, setErrorText] = useState<string>();
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
-  const [{ accessToken, errorMessage }, login] = useAtom(loginAtom);
+  const [{ accessToken, status, errorMessage }, login] = useAtom(loginAtom);
+
+  const isPending = status === 'pending';
 
   const handleSubmit = () => {
     if (!email) {
@@ -55,7 +57,7 @@ export default function Login() {
         <View style={styles.loginForm}>
           <Input onChangeText={setEmail} placeholder='Email' placeholderTextColor={Colors.gray} />
           <Input onChangeText={setPassword} isPassword placeholder='Пароль' placeholderTextColor={Colors.gray} />
-          <Button title='Войти' onPress={handleSubmit} />
+          <Button isPending={isPending} title='Войти' onPress={handleSubmit} />
         </View>
         <CustomLink href={AppRoutes.restore} text='Восстановить пароль' />
         <CustomLink href={'/course/ts'} text='курс' />
