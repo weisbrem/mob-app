@@ -1,10 +1,10 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import { Input } from '../shared/input/input';
 import { Colors, Gaps } from '../shared/tokens';
 import { Button } from '../shared/Button/Button';
 import { Toast } from '../shared/Toast/Toast';
 import { useState } from 'react';
-import { Link } from 'expo-router';
+import CustomLink from '../shared/CustomLink/CustomLink';
 
 export default function Login() {
   const [errorText, setErrorText] = useState<string | undefined>();
@@ -28,9 +28,7 @@ export default function Login() {
           <Input isPassword placeholder='Пароль' placeholderTextColor={Colors.gray} />
           <Button title='Войти' onPress={alert} />
         </View>
-        <Link href={'/restore'} style={styles.resetLink}>
-          <Text>Восстановить пароль</Text>
-        </Link>
+        <CustomLink href={'/restore'} text='Восстановить пароль' />
       </View>
     </View>
   );
@@ -53,12 +51,5 @@ const styles = StyleSheet.create({
   loginForm: {
     rowGap: Gaps.g16,
     alignSelf: 'stretch',
-  },
-  resetLink: {
-    color: Colors.link,
-    fontFamily: 'FiraSans',
-    fontSize: 18,
-    lineHeight: 20,
-    fontWeight: '400',
   },
 });

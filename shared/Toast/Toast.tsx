@@ -1,5 +1,5 @@
 import { Text, StyleSheet, Dimensions, Animated } from 'react-native';
-import { Colors } from '../tokens';
+import { Colors, FontFamily, FontSize, LineHeight } from '../tokens';
 import { useEffect, useState } from 'react';
 
 interface IToastProps {
@@ -55,10 +55,10 @@ const styles = StyleSheet.create({
   },
   text: {
     color: Colors.text,
-    fontFamily: 'FiraSans',
-    fontSize: 16,
+    fontFamily: FontFamily.FiraSans,
+    fontSize: FontSize.f16,
+    lineHeight: LineHeight.l18,
     fontWeight: '400',
-    lineHeight: 18,
     textAlign: 'center',
   },
 });

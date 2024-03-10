@@ -1,12 +1,10 @@
-import { Link } from 'expo-router';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import CustomLink from '../shared/CustomLink/CustomLink';
 
 export default function Restore() {
   return (
     <View>
-      <Link href={'/'}>
-        <Text>Restore</Text>
-      </Link>
+      <CustomLink href={'/'} text='Restore' />
     </View>
   );
 }

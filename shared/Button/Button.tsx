@@ -1,5 +1,5 @@
 import { Animated, GestureResponderEvent, Pressable, PressableProps, StyleSheet, Text } from 'react-native';
-import { Colors, Radius } from '../tokens';
+import { Colors, FontFamily, FontSize, LineHeight, Radius } from '../tokens';
 
 interface IButtonProps extends PressableProps {
   title: string;
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: Colors.text,
-    fontFamily: 'FiraSans',
-    fontSize: 18,
-    lineHeight: 20,
+    fontFamily: FontFamily.FiraSans,
+    fontSize: FontSize.f18,
+    lineHeight: LineHeight.l20,
     fontWeight: '400',
   },
 });

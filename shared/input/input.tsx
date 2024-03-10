@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, TextInput, TextInputProps, View } from 'react-native';
-import { Colors, Radius } from '../tokens';
+import { Colors, FontFamily, FontSize, Radius } from '../tokens';
 import EyeClosedIcon from '../../assets/icons/eye-closed';
 import EyeOpenIcon from '../../assets/icons/eye-open';
 import { useState } from 'react';
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 26,
     borderRadius: Radius.r10,
-    fontFamily: 'FiraSans',
-    fontSize: 16,
+    fontFamily: FontFamily.FiraSans,
+    fontSize: FontSize.f16,
     fontWeight: '400',
     textAlign: 'left',
   },
