@@ -48,13 +48,13 @@ export function Toast({ text }: IToastProps) {
 const styles = StyleSheet.create({
   error: {
     position: 'absolute',
-    top: 50,
     width: Dimensions.get('screen').width,
     backgroundColor: Colors.toastErrorBg,
     padding: 15,
   },
   text: {
     color: Colors.text,
+    fontFamily: 'FiraSans',
     fontSize: 16,
     fontWeight: '400',
     lineHeight: 18,

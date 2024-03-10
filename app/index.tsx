@@ -51,12 +51,12 @@ const styles = StyleSheet.create({
     width: 220,
   },
   loginForm: {
-    fontFamily: 'sans-serif',
     rowGap: Gaps.g16,
     alignSelf: 'stretch',
   },
   resetLink: {
     color: Colors.link,
+    fontFamily: 'FiraSans',
     fontSize: 18,
     lineHeight: 20,
     fontWeight: '400',

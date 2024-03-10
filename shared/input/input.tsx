@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 26,
     borderRadius: Radius.r10,
+    fontFamily: 'FiraSans',
     fontSize: 16,
     fontWeight: '400',
     textAlign: 'left',
