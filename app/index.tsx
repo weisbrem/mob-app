@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { Input } from './shared/input/input';
-import { Colors, Gaps } from './shared/tokens';
-import { Button } from './shared/Button/Button';
-import { Toast } from './shared/Toast/Toast';
+import { Input } from '../shared/input/input';
+import { Colors, Gaps } from '../shared/tokens';
+import { Button } from '../shared/Button/Button';
+import { Toast } from '../shared/Toast/Toast';
 import { useState } from 'react';
 
 export default function App() {
@@ -20,7 +20,7 @@ export default function App() {
       <Toast text={errorText} />
 
       <View style={styles.content}>
-        <Image style={styles.logo} resizeMode='contain' source={require('./assets/logo.png')} />
+        <Image style={styles.logo} resizeMode='contain' source={require('../assets/logo.png')} />
 
         <View style={styles.loginForm}>
           <Input placeholder='Email' placeholderTextColor={Colors.gray} />
