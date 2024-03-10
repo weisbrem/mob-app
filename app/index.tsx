@@ -29,6 +29,7 @@ export default function Login() {
           <Button title='Войти' onPress={alert} />
         </View>
         <CustomLink href={'/restore'} text='Восстановить пароль' />
+        <CustomLink href={'/course/ts'} text='курс' />
       </View>
     </View>
   );
