@@ -3,19 +3,47 @@ import { Input } from '../shared/input/input';
 import { Colors, Gaps } from '../shared/tokens';
 import { Button } from '../shared/Button/Button';
 import { Toast } from '../shared/Toast/Toast';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CustomLink from '../shared/CustomLink/CustomLink';
 import { AppRoutes } from '../shared/common.types';
+import { loginAtom } from '../entities/auth/model/auth.state';
+import { useAtom } from 'jotai';
+import { router } from 'expo-router';
 
 export default function Login() {
-  const [errorText, setErrorText] = useState<string | undefined>();
+  const [errorText, setErrorText] = useState<string>();
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
+  const [{ accessToken, errorMessage }, login] = useAtom(loginAtom);
 
-  const alert = () => {
-    setErrorText('Неверный логин или пароль');
-    setTimeout(() => {
-      setErrorText(undefined);
-    }, 4000);
+  const handleSubmit = () => {
+    if (!email) {
+      setErrorText('Не введен email');
+      return;
+    }
+
+    if (!password) {
+      setErrorText('Не введен пароль');
+      return;
+    }
+
+    login({
+      email,
+      password,
+    });
   };
+
+  useEffect(() => {
+    if (errorMessage) {
+      setErrorText(errorMessage);
+    }
+  }, [errorMessage]);
+
+  useEffect(() => {
+    if (accessToken) {
+      router.replace(AppRoutes.root);
+    }
+  }, [accessToken]);
 
   return (
     <View style={styles.container}>
@@ -25,9 +53,9 @@ export default function Login() {
         <Image style={styles.logo} resizeMode='contain' source={require('../assets/logo.png')} />
 
         <View style={styles.loginForm}>
-          <Input placeholder='Email' placeholderTextColor={Colors.gray} />
-          <Input isPassword placeholder='Пароль' placeholderTextColor={Colors.gray} />
-          <Button title='Войти' onPress={alert} />
+          <Input onChangeText={setEmail} placeholder='Email' placeholderTextColor={Colors.gray} />
+          <Input onChangeText={setPassword} isPassword placeholder='Пароль' placeholderTextColor={Colors.gray} />
+          <Button title='Войти' onPress={handleSubmit} />
         </View>
         <CustomLink href={AppRoutes.restore} text='Восстановить пароль' />
         <CustomLink href={'/course/ts'} text='курс' />
