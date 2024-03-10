@@ -8,21 +8,19 @@ import { API } from '../api/api';
 
 const storage = createJSONStorage<IAuthState>(() => AsyncStorage);
 
-export const authAtom = atomWithStorage(
-  'auth',
-  {
-    access_token: null,
-    status: 'idle',
-    errorMessage: null,
-  },
-  storage,
-);
+const InitialState: IAuthState = {
+  accessToken: null,
+  status: 'idle',
+  errorMessage: null,
+};
+
+export const authAtom = atomWithStorage('auth', InitialState, storage);
 
 export const loginAtom = atom(
   (get) => get(authAtom),
   async (_get, set, { email, password }: IAuthRequest) => {
     set(authAtom, {
-      access_token: null,
+      accessToken: null,
       status: 'pending',
       errorMessage: null,
     });
@@ -34,14 +32,14 @@ export const loginAtom = atom(
       });
 
       set(authAtom, {
-        access_token: data.access_token,
+        accessToken: data.access_token,
         status: 'fulfilled',
         errorMessage: null,
       });
     } catch (error) {
       if (error instanceof AxiosError) {
         set(authAtom, {
-          access_token: null,
+          accessToken: null,
           status: 'rejected',
           errorMessage: error.response?.data.message,
         });
@@ -50,8 +48,12 @@ export const loginAtom = atom(
   },
 );
 
+export const logoutAtom = atom(null, (_get, set) => {
+  set(authAtom, InitialState);
+});
+
 export interface IAuthState {
-  access_token: string | null;
+  accessToken: string | null;
   status: TFetchStatus;
   errorMessage: string | null;
 }
