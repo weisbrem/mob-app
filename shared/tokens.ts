@@ -1,5 +1,6 @@
 export const Colors = {
   black: '#16171d',
+  blackLight: '#1E1F29',
   gray: '#afb2bf',
   violetDark: '#2e2d3d',
   primary: '#6c38cc',
@@ -27,6 +28,7 @@ export const FontSize = {
 export const LineHeight = {
   l18: 18,
   l20: 20,
+  l22: 22,
   l24: 24,
 };
 
