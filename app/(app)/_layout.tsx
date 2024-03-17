@@ -41,6 +41,8 @@ export default function AppLayout() {
         })}
       >
         <Drawer.Screen name='index' options={{ title: 'Мои курсы' }} />
+        <Drawer.Screen name='profile' options={{ title: 'Профиль' }} />
+        <Drawer.Screen name='club' options={{ title: 'Клуб' }} />
       </Drawer>
     </GestureHandlerRootView>
   );
