@@ -1,6 +1,6 @@
 import { useLocalSearchParams } from 'expo-router';
 import { View, Text, StyleSheet } from 'react-native';
-import { Colors } from '../../../shared/tokens';
+import { Colors, FontFamily, FontSize, LineHeight } from '../../../shared/tokens';
 
 export default function CoursePage() {
   const { alias } = useLocalSearchParams();
@@ -15,9 +15,9 @@ export default function CoursePage() {
 const styles = StyleSheet.create({
   text: {
     color: Colors.text,
-    fontFamily: 'FiraSans',
-    fontSize: 18,
-    lineHeight: 20,
+    fontFamily: FontFamily.FiraSans,
+    fontSize: FontSize.f18,
+    lineHeight: LineHeight.l20,
     fontWeight: '400',
     textAlign: 'center',
   },
