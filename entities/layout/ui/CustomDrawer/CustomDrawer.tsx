@@ -1,7 +1,7 @@
 import { DrawerContentComponentProps, DrawerContentScrollView } from '@react-navigation/drawer';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { Colors } from '../../../../shared/tokens';
-import { AppRoutes } from '../../../../shared/common.types';
+import { AppRoutes } from '../../../../shared/app-routes';
 import CustomLink from '../../../../shared/CustomLink/CustomLink';
 import { CloseDrawer } from '../../../../features/layout/ui/CloseDrawer/CloseDrawer';
 import { useSetAtom } from 'jotai';
