@@ -4,17 +4,24 @@ import { Colors } from '../../../../shared/tokens';
 import { AppRoutes } from '../../../../shared/app-routes';
 import CustomLink from '../../../../shared/CustomLink/CustomLink';
 import { CloseDrawer } from '../../../../features/layout/ui/CloseDrawer/CloseDrawer';
-import { useSetAtom } from 'jotai';
+import { useAtom, useSetAtom } from 'jotai';
 import { logoutAtom } from '../../../auth/model/auth.state';
+import { useEffect } from 'react';
+import { loadProfileAtom } from '../../../user/model/user.state';
 
 export function CustomDrawer({ navigation, ...props }: DrawerContentComponentProps) {
   const logout = useSetAtom(logoutAtom);
+  const [profile, loadProfile] = useAtom(loadProfileAtom);
+
+  useEffect(() => {
+    loadProfile();
+  }, []);
 
   return (
     <DrawerContentScrollView {...props} contentContainerStyle={styles.scrollView}>
       <View style={styles.content}>
         <CloseDrawer navigation={navigation} />
-        <Text>test</Text>
+        <Text>{profile.profile?.name}</Text>
       </View>
       <View style={styles.footer}>
         <CustomLink text='Выход' href={AppRoutes.login} onPress={logout} />

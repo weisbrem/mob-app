@@ -13,7 +13,7 @@ export const profileAtom = atom<IUserState>({
 
 export const loadProfileAtom = atom(
   async (get) => {
-    get(profileAtom);
+    return get(profileAtom);
   },
   async (get, set) => {
     const { accessToken } = await get(authAtom);
