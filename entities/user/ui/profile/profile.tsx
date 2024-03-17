@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     marginTop: 40,
+    marginBottom: 40,
     rowGap: Gaps.g8,
   },
   image: {

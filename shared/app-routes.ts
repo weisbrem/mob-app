@@ -2,5 +2,7 @@ export const AppRoutes = {
   root: '/',
   login: '/login',
   restore: '/restore',
-  myCourses: '/my-courses',
+  courses: 'index',
+  profile: 'profile',
+  club: 'club',
 };
