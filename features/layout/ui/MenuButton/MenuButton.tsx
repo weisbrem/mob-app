@@ -2,10 +2,10 @@ import { View, Pressable, PressableProps, StyleSheet } from 'react-native';
 import BurgerIcon from '../../../../assets/icons/burger-icon';
 import { useState } from 'react';
 import { Colors } from '../../../../shared/tokens';
+import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/src/types';
 
 interface IButtonProps extends PressableProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  navigation: any;
+  navigation: DrawerNavigationHelpers;
 }
 
 export function MenuButton({ navigation, ...props }: IButtonProps) {
