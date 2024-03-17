@@ -1,3 +1,5 @@
+import { ApiRoutes } from '../../../shared/api-routes';
+
 export const API = {
-  login: `${process.env.EXPO_PUBLIC_API_PREFIX}/auth/login`,
+  login: `${process.env.EXPO_PUBLIC_API_PREFIX}${ApiRoutes.login}`,
 };

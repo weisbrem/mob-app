@@ -5,7 +5,7 @@ import { Button } from '../shared/Button/Button';
 import { Toast } from '../shared/Toast/Toast';
 import { useEffect, useState } from 'react';
 import CustomLink from '../shared/CustomLink/CustomLink';
-import { AppRoutes } from '../shared/common.types';
+import { AppRoutes } from '../shared/app-routes';
 import { loginAtom } from '../entities/auth/model/auth.state';
 import { useAtom } from 'jotai';
 import { router } from 'expo-router';

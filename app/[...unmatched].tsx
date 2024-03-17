@@ -2,7 +2,7 @@ import { Text, Image, StyleSheet } from 'react-native';
 import { Colors, FontFamily } from '../shared/tokens';
 import CustomLink from '../shared/CustomLink/CustomLink';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { AppRoutes } from '../shared/common.types';
+import { AppRoutes } from '../shared/app-routes';
 
 export default function UnmatchedCustom() {
   return (
