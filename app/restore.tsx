@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import CustomLink from '../shared/CustomLink/CustomLink';
-import { AppRoutes } from '../shared/common.types';
+import { AppRoutes } from '../shared/app-routes';
 
 export default function Restore() {
   return (

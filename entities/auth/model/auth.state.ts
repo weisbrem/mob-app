@@ -1,8 +1,7 @@
-import { TFetchStatus } from '../../../shared/common.types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { atom } from 'jotai';
 import { atomWithStorage, createJSONStorage } from 'jotai/utils';
-import { IAuthRequest, IAuthResponse } from './auth.interfaces';
+import { IAuthRequest, IAuthResponse, IAuthState } from './auth.interfaces';
 import axios, { AxiosError } from 'axios';
 import { API } from '../api/api';
 
@@ -51,9 +50,3 @@ export const loginAtom = atom(
 export const logoutAtom = atom(null, (_get, set) => {
   set(authAtom, InitialState);
 });
-
-export interface IAuthState {
-  accessToken: string | null;
-  status: TFetchStatus;
-  errorMessage: string | null;
-}
