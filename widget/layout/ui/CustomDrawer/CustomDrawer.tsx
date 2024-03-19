@@ -5,14 +5,14 @@ import { AppRoutes } from '../../../../shared/app-routes';
 import CustomLink from '../../../../shared/CustomLink/CustomLink';
 import { CloseDrawer } from '../../../../features/layout/ui/CloseDrawer/CloseDrawer';
 import { useAtom, useSetAtom } from 'jotai';
-import { logoutAtom } from '../../../auth/model/auth.state';
+import { logoutAtom } from '../../../../entities/auth/model/auth.state';
 import { useEffect } from 'react';
-import { loadProfileAtom } from '../../../user/model/user.state';
-import { Profile } from '../../../user/ui/profile/profile';
+import { loadProfileAtom } from '../../../../entities/user/model/user.state';
+import { Profile } from '../../../../entities/user/ui/profile/profile';
 import CoursesIcon from '../../../../assets/icons/nav/courses-icon';
 import ProfileIcon from '../../../../assets/icons/nav/profile-icon';
 import ClubIcon from '../../../../assets/icons/nav/club-icon';
-import { MenuItem } from '../MenuItem/MenuItem';
+import { MenuItem } from '../../../../entities/layout/ui/MenuItem/MenuItem';
 
 const MENU_LIST = [
   {
