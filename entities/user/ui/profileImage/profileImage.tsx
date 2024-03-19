@@ -7,7 +7,7 @@ interface IProfileProps {
   surname?: string;
 }
 
-export function Profile({ photo, name, surname }: IProfileProps) {
+export function ProfileImage({ photo, name, surname }: IProfileProps) {
   const imageSource = photo ? { uri: photo } : require('../../../../assets/images/user-profile-default.png');
 
   return (
