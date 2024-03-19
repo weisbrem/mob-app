@@ -35,6 +35,6 @@ export const LineHeight = {
 };
 
 export const FontFamily = {
-  FiraSans: 'FiraSans',
-  FiraSansSemiBold: 'FiraSansSemiBold',
+  FiraSans: 'FiraSans-Regular',
+  FiraSansSemiBold: 'FiraSans-SemiBold',
 };
