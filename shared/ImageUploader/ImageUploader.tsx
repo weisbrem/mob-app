@@ -4,13 +4,13 @@ import {
   MediaTypeOptions,
   PermissionStatus,
 } from 'expo-image-picker';
+import FormData from 'form-data';
+import axios, { AxiosError } from 'axios';
 import { Alert, StyleSheet, Text, Pressable, View } from 'react-native';
 import UploadIcon from '../../assets/icons/upload';
 import { Colors, FontFamily, FontSize, Gaps, LineHeight, Radius } from '../tokens';
-
-interface IImageUploaderProps {
-  onUpload: (uri: string) => void;
-}
+import { ApiRoutes } from '../api-routes';
+import { IImageUploaderProps, IUploaderResponse } from './imageUploader.interface';
 
 export function ImageUploader({ onUpload }: IImageUploaderProps) {
   const [libraryPermissionInfo, requestLibraryPermissionInfo] = useMediaLibraryPermissions();
@@ -47,7 +47,35 @@ export function ImageUploader({ onUpload }: IImageUploaderProps) {
       return;
     }
 
-    onUpload(assets[0].uri);
+    await uploadImageToServer(assets[0].uri, assets[0].fileName ?? '');
+  };
+
+  const uploadImageToServer = async (uri: string, name: string) => {
+    const apiUrl = `${process.env.EXPO_PUBLIC_API_PREFIX}${ApiRoutes.uploadImage}`;
+    const formData = new FormData();
+
+    formData.append('file', {
+      uri,
+      name,
+      type: 'image/jpeg',
+    });
+
+    try {
+      const { data } = await axios.post<IUploaderResponse>(apiUrl, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      onUpload(data.urls.original);
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        console.log(error);
+        Alert.alert('Ошибка при загрузке. Повторите позже');
+      }
+
+      return null;
+    }
   };
 
   return (
