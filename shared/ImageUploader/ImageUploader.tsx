@@ -12,8 +12,36 @@ import { Colors, FontFamily, FontSize, Gaps, LineHeight, Radius } from '../token
 import { ApiRoutes } from '../api-routes';
 import { IImageUploaderProps, IUploaderResponse } from './imageUploader.interface';
 
-export function ImageUploader({ onUpload }: IImageUploaderProps) {
+export function ImageUploader({ onUpload, onError }: IImageUploaderProps) {
   const [libraryPermissionInfo, requestLibraryPermissionInfo] = useMediaLibraryPermissions();
+
+  const handleUpload = async () => {
+    const isPermissionGranted = await verifyMediaPermissions();
+
+    if (!isPermissionGranted) {
+      onError('Недостаточно прав');
+
+      return;
+    }
+
+    const asset = await handlePickImage();
+
+    if (!asset) {
+      onError('Не выбрано изображение');
+
+      return;
+    }
+
+    const uploadedUrl = await handleUploadImageToServer(asset.uri, asset.fileName ?? '');
+
+    if (!uploadedUrl) {
+      onError('Не удалось загрузить изображение');
+
+      return;
+    }
+
+    onUpload(uploadedUrl);
+  };
 
   const verifyMediaPermissions = async () => {
     if (libraryPermissionInfo?.status === PermissionStatus.UNDETERMINED) {
@@ -29,13 +57,7 @@ export function ImageUploader({ onUpload }: IImageUploaderProps) {
     return true;
   };
 
-  const pickImage = async () => {
-    const isPermissionGranted = await verifyMediaPermissions();
-
-    if (!isPermissionGranted) {
-      return;
-    }
-
+  const handlePickImage = async () => {
     const { assets } = await launchImageLibraryAsync({
       mediaTypes: MediaTypeOptions.Images,
       allowsEditing: true,
@@ -44,13 +66,13 @@ export function ImageUploader({ onUpload }: IImageUploaderProps) {
     });
 
     if (!assets) {
-      return;
+      return null;
     }
 
-    await uploadImageToServer(assets[0].uri, assets[0].fileName ?? '');
+    return assets[0];
   };
 
-  const uploadImageToServer = async (uri: string, name: string) => {
+  const handleUploadImageToServer = async (uri: string, name: string) => {
     const apiUrl = `${process.env.EXPO_PUBLIC_API_PREFIX}${ApiRoutes.uploadImage}`;
     const formData = new FormData();
 
@@ -67,11 +89,10 @@ export function ImageUploader({ onUpload }: IImageUploaderProps) {
         },
       });
 
-      onUpload(data.urls.original);
+      return data.urls.original;
     } catch (error) {
       if (error instanceof AxiosError) {
         console.log(error);
-        Alert.alert('Ошибка при загрузке. Повторите позже');
       }
 
       return null;
@@ -79,7 +100,7 @@ export function ImageUploader({ onUpload }: IImageUploaderProps) {
   };
 
   return (
-    <Pressable onPress={pickImage} style={styles.container}>
+    <Pressable onPress={handleUpload} style={styles.container}>
       <View style={styles.content}>
         <UploadIcon />
         <Text style={styles.text}>Загрузить изобраение</Text>

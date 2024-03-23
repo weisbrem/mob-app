@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, StyleSheet, Image } from 'react-native';
+import { View, StyleSheet, Image, Alert } from 'react-native';
 import { Button } from '../../shared/Button/Button';
 import { Input } from '../../shared/input/input';
 import { Colors, FontFamily, FontSize, Gaps, LineHeight, Radius } from '../../shared/tokens';
@@ -17,7 +17,7 @@ export default function Profile() {
           <Image source={require('../../assets/images/user-profile-default.png')} />
         )}
 
-        <ImageUploader onUpload={setImage} />
+        <ImageUploader onUpload={setImage} onError={(error) => Alert.alert(error)} />
       </View>
 
       <Input style={styles.input} placeholder='Имя' placeholderTextColor={Colors.gray} />
