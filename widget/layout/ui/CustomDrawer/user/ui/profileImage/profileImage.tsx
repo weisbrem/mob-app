@@ -1,18 +1,17 @@
-import { View, Text, Image, StyleSheet } from 'react-native';
-import { Colors, FontFamily, FontSize, Gaps, LineHeight } from '../../../../shared/tokens';
+import { View, Text, StyleSheet } from 'react-native';
+import { Colors, FontFamily, FontSize, Gaps, LineHeight } from '../../../../../../../shared/tokens';
+import { Avatar } from '../../../../../../../entities/user/ui/Avatar/Avatar';
 
 interface IProfileProps {
-  photo?: string;
+  photo: string | null;
   name?: string;
   surname?: string;
 }
 
 export function ProfileImage({ photo, name, surname }: IProfileProps) {
-  const imageSource = photo ? { uri: photo } : require('../../../../assets/images/user-profile-default.png');
-
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={imageSource} />
+      <Avatar photo={photo} />
 
       <Text style={styles.name}>
         {name && name} {surname && surname}
@@ -27,11 +26,6 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginBottom: 40,
     rowGap: Gaps.g8,
-  },
-  image: {
-    width: 70,
-    height: 70,
-    borderRadius: 50,
   },
   name: {
     fontFamily: FontFamily.FiraSans,
