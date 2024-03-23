@@ -8,7 +8,7 @@ interface IInputProps extends TextInputProps {
   isPassword?: boolean;
 }
 
-export function Input({ isPassword, ...props }: IInputProps) {
+export function Input({ isPassword, style, ...props }: IInputProps) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   const handleChangeIsPasswordVisible = () => {
@@ -16,7 +16,7 @@ export function Input({ isPassword, ...props }: IInputProps) {
   };
 
   return (
-    <View>
+    <View style={style}>
       <TextInput style={styles.input} secureTextEntry={isPassword && !isPasswordVisible} {...props} />
       {isPassword && (
         <Pressable onPress={handleChangeIsPasswordVisible} style={styles.eyeIcon}>

@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { Colors, FontFamily, FontSize, Gaps, LineHeight } from '../../../../../../../shared/tokens';
-import { Avatar } from '../../../../../../../entities/user/ui/Avatar/Avatar';
+import { Colors, FontFamily, FontSize, Gaps, LineHeight } from '../../../../shared/tokens';
+import { Avatar } from '../../../../entities/user/ui/Avatar/Avatar';
 
 interface IProfileProps {
   photo: string | null;
