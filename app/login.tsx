@@ -1,4 +1,4 @@
-import { StyleSheet, View, Image, Dimensions } from 'react-native';
+import { StyleSheet, View, Image, Dimensions, KeyboardAvoidingView, Platform } from 'react-native';
 import { useAtom } from 'jotai';
 import { router } from 'expo-router';
 import { Orientation } from 'expo-screen-orientation';
@@ -55,7 +55,7 @@ export default function Login() {
     <View style={styles.container}>
       <Toast text={errorText} />
 
-      <View style={styles.content}>
+      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.content}>
         <Image style={styles.logo} resizeMode='contain' source={require('../assets/logo.png')} />
 
         <View style={styles.loginForm}>
@@ -87,7 +87,7 @@ export default function Login() {
         </View>
         <CustomLink href={AppRoutes.restore} text='Восстановить пароль' />
         <CustomLink href={'/course/ts'} text='курс' />
-      </View>
+      </KeyboardAvoidingView>
     </View>
   );
 }
