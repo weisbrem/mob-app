@@ -8,11 +8,11 @@ import { useAtom, useSetAtom } from 'jotai';
 import { logoutAtom } from '../../../../entities/auth/model/auth.state';
 import { useEffect } from 'react';
 import { loadProfileAtom } from '../../../../entities/user/model/user.state';
-import { ProfileImage } from './user/ui/profileImage/profileImage';
 import CoursesIcon from '../../../../assets/icons/nav/courses-icon';
 import ProfileIcon from '../../../../assets/icons/nav/profile-icon';
 import ClubIcon from '../../../../assets/icons/nav/club-icon';
 import { MenuItem } from '../../../../entities/layout/ui/MenuItem/MenuItem';
+import { ProfileImage } from '../../../user/ui/profileImage/profileImage';
 
 const MENU_LIST = [
   {
@@ -44,7 +44,7 @@ export function CustomDrawer({ navigation, ...props }: DrawerContentComponentPro
     <DrawerContentScrollView {...props} contentContainerStyle={styles.scrollView}>
       <View style={styles.content}>
         <CloseDrawer navigation={navigation} />
-        <ProfileImage photo={profile?.photo} name={profile?.name} surname={profile?.surname} />
+        <ProfileImage photo={profile?.photo ?? ''} name={profile?.name} surname={profile?.surname} />
 
         {MENU_LIST.map((item) => (
           <MenuItem
