@@ -37,3 +37,10 @@ export enum TariffType {
   mentor = 'mentor',
   project = 'project',
 }
+
+export interface IStudentCourseResponse {
+  allTariffs: [];
+  progress: {};
+  rest: TStudentCourseDescription[];
+  userTariff: [];
+}

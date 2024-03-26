@@ -3,7 +3,7 @@ import axios, { AxiosError } from 'axios';
 import { authAtom } from '../../auth/model/auth.state';
 import { API } from '../api/api';
 import { ICourseState } from './course.interface';
-import { TStudentCourseDescription } from './course.model';
+import { IStudentCourseResponse } from './course.model';
 
 export const courseAtom = atom<ICourseState>({
   courses: [],
@@ -24,14 +24,17 @@ export const loadCourseAtom = atom(
     });
 
     try {
-      const { data } = await axios.get<TStudentCourseDescription[]>(API.courses, {
+      const { data } = await axios.get<IStudentCourseResponse[]>(API.courses, {
+        params: {
+          studentCourse: 'my',
+        },
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       });
 
       set(courseAtom, {
-        courses: data,
+        courses: data.flatMap(({ rest }) => rest),
         status: 'fulfilled',
         errorMessage: null,
       });
