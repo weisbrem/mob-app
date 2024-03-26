@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { Colors, Gaps } from '../../shared/tokens';
+import { View, ScrollView, StyleSheet } from 'react-native';
+import { Gaps } from '../../shared/tokens';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { courseAtom, loadCourseAtom } from '../../entities/course/model/course.state';
 import { useEffect } from 'react';
@@ -16,9 +16,11 @@ export default function MyCourses() {
   }, []);
 
   return (
-    <View style={styles.container}>
-      {hasCourse && courses.map((course) => <CourseCard {...course} key={course.id} />)}
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        {hasCourse && courses.map((course) => <CourseCard {...course} key={course.id} />)}
+      </View>
+    </ScrollView>
   );
 }
 
