@@ -1,8 +1,9 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { Colors } from '../../shared/tokens';
+import { Colors, Gaps } from '../../shared/tokens';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { courseAtom, loadCourseAtom } from '../../entities/course/model/course.state';
 import { useEffect } from 'react';
+import { CourseCard } from '../../entities/course/ui/CourseCard/CourseCard';
 
 export default function MyCourses() {
   const loadCourse = useSetAtom(loadCourseAtom);
@@ -15,19 +16,16 @@ export default function MyCourses() {
   }, []);
 
   return (
-    <View>
-      {hasCourse &&
-        courses.map(({ title, id }) => (
-          <Text style={styles.text} key={id}>
-            {title}
-          </Text>
-        ))}
+    <View style={styles.container}>
+      {hasCourse && courses.map((course) => <CourseCard {...course} key={course.id} />)}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  text: {
-    color: Colors.text,
+  container: {
+    flexDirection: 'column',
+    gap: Gaps.g18,
+    padding: 30,
   },
 });

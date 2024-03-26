@@ -8,18 +8,21 @@ export const Colors = {
   link: '#a97bff',
   text: '#fafafa',
   toastErrorBg: '#CC384E',
+  chipBorder: '#4D5064',
 };
 
 export const Gaps = {
   g8: 8,
   g10: 10,
   g16: 16,
+  g18: 18,
   g24: 24,
   g50: 50,
 };
 
 export const Radius = {
   r10: 10,
+  r18: 18,
 };
 
 export const FontSize = {
