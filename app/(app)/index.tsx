@@ -1,9 +1,9 @@
-import { View, ScrollView, StyleSheet } from 'react-native';
-import { Gaps } from '../../shared/tokens';
+import { View, FlatList, StyleSheet } from 'react-native';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { courseAtom, loadCourseAtom } from '../../entities/course/model/course.state';
 import { useEffect } from 'react';
 import { CourseCard } from '../../entities/course/ui/CourseCard/CourseCard';
+import { TStudentCourseDescription } from '../../entities/course/model/course.model';
 
 export default function MyCourses() {
   const loadCourse = useSetAtom(loadCourseAtom);
@@ -11,23 +11,24 @@ export default function MyCourses() {
 
   const hasCourse = courses.length > 0;
 
+  const renderCourses = ({ item }: { item: TStudentCourseDescription }) => (
+    <View style={styles.course}>
+      <CourseCard {...item} />
+    </View>
+  );
+
   useEffect(() => {
     loadCourse();
   }, []);
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        {hasCourse && courses.map((course) => <CourseCard {...course} key={course.id} />)}
-      </View>
-    </ScrollView>
+    <>{hasCourse && <FlatList data={courses} keyExtractor={({ id }) => id.toString()} renderItem={renderCourses} />}</>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
-    gap: Gaps.g18,
-    padding: 30,
+  course: {
+    paddingVertical: 9,
+    paddingHorizontal: 30,
   },
 });
