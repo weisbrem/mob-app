@@ -4,14 +4,14 @@ import { Chip } from '../../../../shared/Chip/Chip';
 import { Button } from '../../../../shared/Button/Button';
 import { Colors, FontFamily, FontSize, Gaps, LineHeight, Radius } from '../../../../shared/tokens';
 
-export function CourseCard({ image, title, courseOnDirection }: TStudentCourseDescription) {
+export function CourseCard({ image, shortTitle, courseOnDirection }: TStudentCourseDescription) {
   const hasCourseOnDirection = courseOnDirection.length > 0;
 
   return (
     <View style={styles.card}>
       <Image source={{ uri: image }} style={styles.image} />
       <View style={styles.header}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title}>{shortTitle}</Text>
 
         <View style={styles.chips}>
           {hasCourseOnDirection &&
