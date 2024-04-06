@@ -2,6 +2,7 @@ export const Colors = {
   black: '#16171d',
   blackLight: '#1E1F29',
   gray: '#afb2bf',
+  grayLight: '#DAD9DE',
   violetDark: '#2e2d3d',
   primary: '#6c38cc',
   primaryHover: '#452481',
@@ -9,6 +10,8 @@ export const Colors = {
   text: '#fafafa',
   toastErrorBg: '#CC384E',
   chipBorder: '#4D5064',
+  progressBarLineBg: '#4D5064',
+  progressBarBg: '#E47AD5',
 };
 
 export const Gaps = {
@@ -26,6 +29,7 @@ export const Radius = {
 };
 
 export const FontSize = {
+  f12: 12,
   f14: 14,
   f16: 16,
   f18: 18,

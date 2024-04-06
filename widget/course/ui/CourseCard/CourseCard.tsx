@@ -5,8 +5,16 @@ import { Button } from '../../../../shared/Button/Button';
 import { Colors, FontFamily, FontSize, Gaps, LineHeight, Radius } from '../../../../shared/tokens';
 import MaskedView from '@react-native-masked-view/masked-view';
 import { LinearGradient } from 'expo-linear-gradient';
+import { ProgressBar } from '../../../../entities/course/ui/ProgressBar/ProgressBar';
 
-export function CourseCard({ image, shortTitle, courseOnDirection, alias, tariff }: TStudentCourseDescription) {
+export function CourseCard({
+  image,
+  shortTitle,
+  courseOnDirection,
+  alias,
+  tariff,
+  progress,
+}: TStudentCourseDescription) {
   const hasCourseOnDirection = courseOnDirection.length > 0;
   const buyLink = `https://app.purpleschool.ru/courses/${alias}`;
 
@@ -20,6 +28,10 @@ export function CourseCard({ image, shortTitle, courseOnDirection, alias, tariff
     <View style={styles.card}>
       <Image source={{ uri: image }} style={styles.image} />
       <View style={styles.header}>
+        <View style={styles.progressBar}>
+          <ProgressBar progress={progress} />
+        </View>
+
         <Text style={styles.title}>{shortTitle}</Text>
 
         <View style={styles.chips}>
@@ -64,6 +76,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingVertical: 18,
   },
+  progressBar: {},
   chips: {
     flexDirection: 'row',
     columnGap: Gaps.g10,
