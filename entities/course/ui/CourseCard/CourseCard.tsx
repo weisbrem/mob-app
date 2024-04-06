@@ -3,10 +3,14 @@ import { TStudentCourseDescription } from '../../model/course.model';
 import { Chip } from '../../../../shared/Chip/Chip';
 import { Button } from '../../../../shared/Button/Button';
 import { Colors, FontFamily, FontSize, Gaps, LineHeight, Radius } from '../../../../shared/tokens';
+import MaskedView from '@react-native-masked-view/masked-view';
+import { LinearGradient } from 'expo-linear-gradient';
 
-export function CourseCard({ image, shortTitle, courseOnDirection, alias }: TStudentCourseDescription) {
+export function CourseCard({ image, shortTitle, courseOnDirection, alias, tariff }: TStudentCourseDescription) {
   const hasCourseOnDirection = courseOnDirection.length > 0;
   const buyLink = `https://app.purpleschool.ru/courses/${alias}`;
+
+  const humanTarifName = tariff === 'basic' && 'Самостоятельный';
 
   const handleBuyButtonPress = () => {
     Linking.openURL(buyLink);
@@ -22,6 +26,12 @@ export function CourseCard({ image, shortTitle, courseOnDirection, alias }: TStu
           {hasCourseOnDirection &&
             courseOnDirection.map(({ direction }) => <Chip text={direction.name} key={direction.name} />)}
         </View>
+
+        <MaskedView maskElement={<Text style={styles.tarif}>Тариф &laquo;{humanTarifName}&raquo;</Text>}>
+          <LinearGradient colors={['#D77BE5', '#6C38CC']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
+            <Text style={{ ...styles.tarif, ...styles.tarifWithOpacity }}>Тариф &laquo;{humanTarifName}&raquo;</Text>
+          </LinearGradient>
+        </MaskedView>
       </View>
 
       <View style={styles.footer}>
@@ -57,6 +67,17 @@ const styles = StyleSheet.create({
   chips: {
     flexDirection: 'row',
     columnGap: Gaps.g10,
+    marginBottom: 18,
+  },
+  tarif: {
+    fontFamily: FontFamily.FiraSans,
+    fontSize: FontSize.f16,
+    lineHeight: LineHeight.l20,
+    color: Colors.text,
+    fontWeight: '400',
+  },
+  tarifWithOpacity: {
+    opacity: 0,
   },
   footer: {
     backgroundColor: Colors.violetDark,

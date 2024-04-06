@@ -15,6 +15,7 @@ export type TStudentCourseDescription = {
   price: number;
   courseOnDirection: { direction: Record<'name', string> }[];
   tariffs: TTariff[];
+  tariff: TariffType;
   progress: IProgress;
 };
 
