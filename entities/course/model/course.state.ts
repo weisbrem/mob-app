@@ -34,7 +34,7 @@ export const loadCourseAtom = atom(
       });
 
       set(courseAtom, {
-        courses: data.flatMap(({ rest }) => rest),
+        courses: data.flatMap(({ rest, progress }) => ({ ...rest, progress })),
         status: 'fulfilled',
         errorMessage: null,
       });
