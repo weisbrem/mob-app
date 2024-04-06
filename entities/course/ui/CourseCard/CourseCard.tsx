@@ -1,11 +1,16 @@
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { View, Image, Text, StyleSheet, Linking } from 'react-native';
 import { TStudentCourseDescription } from '../../model/course.model';
 import { Chip } from '../../../../shared/Chip/Chip';
 import { Button } from '../../../../shared/Button/Button';
 import { Colors, FontFamily, FontSize, Gaps, LineHeight, Radius } from '../../../../shared/tokens';
 
-export function CourseCard({ image, shortTitle, courseOnDirection }: TStudentCourseDescription) {
+export function CourseCard({ image, shortTitle, courseOnDirection, alias }: TStudentCourseDescription) {
   const hasCourseOnDirection = courseOnDirection.length > 0;
+  const buyLink = `https://app.purpleschool.ru/courses/${alias}`;
+
+  const handleBuyButtonPress = () => {
+    Linking.openURL(buyLink);
+  };
 
   return (
     <View style={styles.card}>
@@ -20,7 +25,7 @@ export function CourseCard({ image, shortTitle, courseOnDirection }: TStudentCou
       </View>
 
       <View style={styles.footer}>
-        <Button title='Купить' />
+        <Button onPress={handleBuyButtonPress} title='Купить' />
       </View>
     </View>
   );
