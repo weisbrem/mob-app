@@ -1,5 +1,5 @@
 import { View, Image, Text, StyleSheet, Linking } from 'react-native';
-import { TStudentCourseDescription } from '../../model/course.model';
+import { TStudentCourseDescription } from '../../../../entities/course/model/course.model';
 import { Chip } from '../../../../shared/Chip/Chip';
 import { Button } from '../../../../shared/Button/Button';
 import { Colors, FontFamily, FontSize, Gaps, LineHeight, Radius } from '../../../../shared/tokens';
